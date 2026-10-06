@@ -1,0 +1,8 @@
+# Caddy HTTPS sertifikatini (Let's Encrypt) avtomatik oladi va yangilab turadi.
+{$DOMAIN}, www.{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy app:3000 {
+		# Sayt mijozning haqiqiy IP manzilini shu sarlavhadan oladi (brute-force himoyasi uchun)
+		header_up X-Real-IP {remote_host}
+	}
+}

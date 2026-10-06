@@ -1,0 +1,166 @@
+{
+  "site": {
+    "nav": {
+      "about": "Markaz haqida",
+      "courses": "Kurslar",
+      "teachers": "Ustozlar",
+      "results": "Natijalar",
+      "faq": "Savollar",
+      "contact": "Aloqa",
+      "login": "Kabinetga kirish",
+      "apply": "Kursga yozilish",
+      "menu": "Menyu"
+    },
+    "hero": {
+      "badge": "IELTS onlayn video kurslar",
+      "title": "IELTS’dan {score} oling —",
+      "titleAccent": "o‘zingizga qulay vaqtda",
+      "text": "Tajribali ustozlarning video darslari, yuklab olinadigan materiallar va har bir qadamingizni ko‘rsatib turadigan progress. Telefoningizdan, istalgan joyda.",
+      "cta": "Kursga yozilish",
+      "secondary": "Kabinetga kirish",
+      "points": [
+        "Darajangizni bepul aniqlaymiz",
+        "Telefon va kompyuterda",
+        "To‘xtagan joydan davom etasiz"
+      ],
+      "cardTitle": "Bugungi dars",
+      "cardModule": "Writing · 3-modul",
+      "cardLesson": "Writing Task 2: kuchli kirish yozish",
+      "cardProgress": "Kurs progressi",
+      "cardStreak": "5 kun ketma-ket",
+      "cardAchievement": "Yangi yutuq: 10 ta dars",
+      "cardLessons": [
+        "Task 2 tuzilmasi",
+        "Kuchli kirish yozish",
+        "Asosiy qism: dalillar"
+      ]
+    },
+    "about": {
+      "eyebrow": "Afzalliklar",
+      "title": "Nega aynan SABOQ?",
+      "text": "Biz yillar davomida oflayn guruhlarda sinovdan o‘tgan dasturimizni endi onlayn formatga olib chiqdik.",
+      "items": [
+        {
+          "title": "Tizimli dastur",
+          "text": "Har bir bo‘lim noldan imtihon darajasigacha: Kurs → Modul → Dars tartibida."
+        },
+        {
+          "title": "O‘z tezligingizda",
+          "text": "Videoni to‘xtating, qayta ko‘ring, tezlashtiring. To‘xtagan joyingizdan davom etasiz."
+        },
+        {
+          "title": "Progress va motivatsiya",
+          "text": "Foizlar, ketma-ket kunlar va yutuq nishonlari sizni oxirigacha olib boradi."
+        },
+        {
+          "title": "Haqiqiy imtihon strategiyalari",
+          "text": "Ustozlarimiz IELTS mezonlarini ichidan biladi va ularni sodda tilda tushuntiradi."
+        }
+      ]
+    },
+    "courses": {
+      "eyebrow": "Kurslar",
+      "title": "IELTS’ning barcha bo‘limlari",
+      "text": "Har bir bo‘lim uchun alohida kurs — kuchsiz tomoningizdan boshlang.",
+      "LISTENING": "Savol turlari, tuzoqlar va tezkor yozib olish texnikalari.",
+      "READING": "Skimming, scanning va vaqtni to‘g‘ri taqsimlash.",
+      "WRITING": "Task 1 va Task 2: tuzilma, g‘oya, band 7+ uchun til.",
+      "SPEAKING": "Uch qism bo‘yicha javob qurish, ravonlik va talaffuz.",
+      "GRAMMAR": "IELTS’da eng ko‘p kerak bo‘ladigan grammatika — amaliy misollar bilan.",
+      "VOCABULARY": "Mavzular bo‘yicha so‘z boyligi va kollokatsiyalar."
+    },
+    "steps": {
+      "eyebrow": "Jarayon",
+      "title": "Qanday boshlanadi?",
+      "items": [
+        {
+          "title": "Ariza qoldiring",
+          "text": "Formani to‘ldiring — administrator siz bilan bog‘lanadi."
+        },
+        {
+          "title": "Login va parol oling",
+          "text": "Darajangizga mos kurslar akkauntingizga ochib beriladi."
+        },
+        {
+          "title": "O‘qishni boshlang",
+          "text": "Darslarni ko‘ring, materiallarni yuklab oling, progressni kuzating."
+        }
+      ]
+    },
+    "teachers": {
+      "eyebrow": "Jamoa",
+      "title": "Ustozlarimiz",
+      "text": "Darslarni o‘zi yuqori ball olgan va yuzlab o‘quvchini tayyorlagan ustozlar o‘tadi."
+    },
+    "results": {
+      "eyebrow": "Natijalar",
+      "title": "O‘quvchilarimiz natijalari",
+      "text": "Natija — eng yaxshi reklama.",
+      "overall": "Overall"
+    },
+    "testimonials": {
+      "title": "O‘quvchilar fikri"
+    },
+    "faq": {
+      "eyebrow": "Savollar",
+      "title": "Ko‘p beriladigan savollar",
+      "more": "Javob topmadingizmi?",
+      "moreText": "Bizga yozing yoki qo‘ng‘iroq qiling — savolingizga tez javob beramiz."
+    },
+    "cta": {
+      "title": "Maqsadingizdagi band score sari birinchi qadam",
+      "text": "Ariza qoldiring — darajangizni bepul aniqlab, mos kursni tavsiya qilamiz.",
+      "button": "Kursga yozilish"
+    },
+    "footer": {
+      "rights": "Barcha huquqlar himoyalangan.",
+      "contacts": "Aloqa",
+      "pages": "Sahifalar"
+    },
+    "contact": {
+      "title": "Biz bilan bog‘laning",
+      "text": "Savolingiz bormi yoki kursga yozilmoqchimisiz? Formani to‘ldiring yoki to‘g‘ridan-to‘g‘ri murojaat qiling.",
+      "address": "Manzil",
+      "phone": "Telefon",
+      "telegram": "Telegram",
+      "hours": "Ish vaqti",
+      "map": "Xaritada markaz joylashuvi",
+      "formTitle": "Kursga yozilish",
+      "formText": "Ma‘lumotlaringizni qoldiring — bir ish kuni ichida bog‘lanamiz.",
+      "name": "Ismingiz",
+      "phoneField": "Telefon raqamingiz",
+      "level": "Ingliz tili darajangiz",
+      "submit": "Ariza yuborish",
+      "submitting": "Yuborilmoqda…",
+      "successTitle": "Arizangiz qabul qilindi!",
+      "successText": "Rahmat, {name}! Administratorimiz tez orada siz bilan bog‘lanadi.",
+      "another": "Yana ariza yuborish",
+      "errors": {
+        "name": "Ismingizni kiriting (kamida 2 ta harf)",
+        "phone": "Telefon raqamini to‘g‘ri kiriting. Namuna: +998 90 123 45 67",
+        "rateLimited": "Juda ko‘p ariza yuborildi. Bir ozdan keyin qayta urinib ko‘ring yoki bizga qo‘ng‘iroq qiling.",
+        "unknown": "Arizani yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring yoki bizga qo‘ng‘iroq qiling."
+      },
+      "levels": {
+        "beginner": "Boshlang‘ich (Beginner)",
+        "elementary": "Elementary",
+        "intermediate": "Intermediate",
+        "upper": "Upper-Intermediate",
+        "advanced": "Advanced",
+        "unknown": "Bilmayman"
+      },
+      "privacy": "Ma’lumotlaringiz faqat siz bilan bog‘lanish uchun ishlatiladi.",
+      "eyebrow": "Aloqa"
+    },
+    "notFound": {
+      "title": "Sahifa topilmadi",
+      "text": "Bu sahifa mavjud emas yoki ko‘chirilgan. Havolani tekshirib ko‘ring.",
+      "home": "Bosh sahifaga qaytish"
+    },
+    "error": {
+      "title": "Nimadir xato ketdi",
+      "text": "Kutilmagan xatolik yuz berdi. Biz buni tuzatamiz — hozircha sahifani qayta yuklab ko‘ring.",
+      "retry": "Qayta urinish"
+    }
+  }
+}

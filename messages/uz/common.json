@@ -1,0 +1,52 @@
+{
+  "common": {
+    "logout": "Chiqish",
+    "loading": "Yuklanmoqda…",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "back": "Orqaga",
+    "home": "Bosh sahifa",
+    "themeToggle": "Yorug‘/qorong‘i rejim",
+    "retry": "Qayta urinish",
+    "delete": "O‘chirish",
+    "edit": "Tahrirlash",
+    "add": "Qo‘shish",
+    "close": "Yopish",
+    "search": "Qidirish",
+    "all": "Barchasi",
+    "yes": "Ha",
+    "copy": "Nusxa olish",
+    "copied": "Nusxalandi",
+    "prev": "Oldingi",
+    "next": "Keyingi",
+    "saved": "Saqlandi",
+    "saving": "Saqlanmoqda…",
+    "open": "Ochish",
+    "unlimited": "Muddatsiz"
+  },
+  "errors": {
+    "invalid": "Kiritilgan ma‘lumotlarda xatolik bor. Tekshirib, qayta urinib ko‘ring.",
+    "unknown": "Kutilmagan xatolik yuz berdi. Birozdan keyin qayta urinib ko‘ring.",
+    "notFound": "Ma‘lumot topilmadi. Sahifani yangilab ko‘ring.",
+    "phone": "Telefon raqami noto‘g‘ri. Namuna: +998 90 123 45 67",
+    "username": "Login 3–32 belgidan iborat bo‘lsin: kichik lotin harflari, raqam, nuqta, chiziqcha.",
+    "email": "Elektron pochta noto‘g‘ri. Namuna: ali@gmail.com",
+    "telegram": "Telegram username noto‘g‘ri. Namuna: @ali_valiyev (5–32 ta lotin harfi, raqam yoki _)",
+    "birthDate": "Tug‘ilgan sana noto‘g‘ri.",
+    "usernameTaken": "Bu login band. Boshqasini tanlang.",
+    "groupExists": "Bunday nomli guruh allaqachon bor.",
+    "lessonNoVideo": "Darsni nashr qilish uchun video yoki kamida bitta material (audio yoki PDF) qo‘shing.",
+    "videoNotConfigured": "Video xizmati hali ulanmagan. .env faylida BUNNY_STREAM_* qiymatlarini to‘ldiring (README’ga qarang).",
+    "videoService": "Video xizmati bilan bog‘lanib bo‘lmadi. Birozdan keyin qayta urinib ko‘ring.",
+    "rateLimited": "Juda ko‘p so‘rov yuborildi. Birozdan keyin qayta urinib ko‘ring.",
+    "noAccess": "Bu darsga kirish huquqingiz yo‘q."
+  },
+  "sections": {
+    "LISTENING": "Listening",
+    "READING": "Reading",
+    "WRITING": "Writing",
+    "SPEAKING": "Speaking",
+    "GRAMMAR": "Grammar",
+    "VOCABULARY": "Vocabulary"
+  }
+}

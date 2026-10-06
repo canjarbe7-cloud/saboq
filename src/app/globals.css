@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
+/* Qorong'i rejim <html class="dark"> orqali yoqiladi */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Ranglar palitrasi: to'q indigo (ishonch, jiddiylik) + iliq sariq (energiya).
+ * Brend rangini o'zgartirish uchun faqat shu o'zgaruvchilarni tahrirlang.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #eef0f6;
+  --surface: #ffffff;
+  --surface-2: #e9ecf5;
+  --line: #d3d8e8;
+  --fg: #10132a;
+  --muted: #474e6b;
+  --brand: #4338ca;
+  --brand-hover: #3730a3;
+  --brand-soft: #e7e7fd;
+  --brand-fg: #ffffff;
+  --accent: #f59e0b;
+  --accent-soft: #fef3c7;
+  --accent-fg: #3b2500;
+  --success: #15803d;
+  --success-soft: #dcfce7;
+  --danger: #c81e3a;
+  --danger-soft: #fde8ec;
+  --marker: rgb(245 158 11 / 0.4);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0c0e1a;
+  --surface: #151829;
+  --surface-2: #1d2136;
+  --line: #2a2f4a;
+  --fg: #eceefb;
+  --muted: #9aa1c0;
+  --brand: #6d66f5;
+  --brand-hover: #837dff;
+  --brand-soft: #23244a;
+  --brand-fg: #ffffff;
+  --accent: #fbbf24;
+  --accent-soft: #3a2c0c;
+  --accent-fg: #2a1a00;
+  --success: #4ade80;
+  --success-soft: #12301f;
+  --danger: #fb7185;
+  --danger-soft: #3a1620;
+  --marker: rgb(251 191 36 / 0.3);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-fg: var(--brand-fg);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-fg);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgb(20 23 43 / 0.06), 0 8px 24px -12px rgb(20 23 43 / 0.16);
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
   }
 }
 
+html {
+  /* Sahifa ichidagi havolalar (#kurslar va h.k.) silliq aylanadi; sahifalararo o'tishda Next.js buni o'chiradi */
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--brand) 22%, transparent);
+}
+
+/* Bosh sahifa fonidagi nozik katakli to'r (yuqoridan pastga so'nib boradi) */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 75%);
+}
+
+/* Sarlavhadagi muhim so'zlar ostidagi "marker" chizig'i (matn bir necha qatorga bo'linsa ham ishlaydi) */
+@utility highlight-marker {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 64%,
+    var(--marker) 64%,
+    var(--marker) 88%,
+    transparent 88%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Gorizontal suriladigan ro'yxatlar (telefonda kartochkalar karuseli) uchun ko'rinmas skrollbar */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*
+ * Ekranga kirganda paydo bo'lish (FadeIn komponenti). Animatsiya sahifa aylantirilishiga bog'langan
+ * (scroll-driven) — JavaScript kerak emas. Qo'llab-quvvatlamaydigan brauzerda yoki "harakatni
+ * kamaytirish" yoqilgan bo'lsa, kontent shunchaki animatsiyasiz ko'rinib turadi.
+ */
+@media screen and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation-name: reveal;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+      animation-timeline: view();
+      animation-range: entry calc(var(--reveal-step, 0) * 6%) entry calc(var(--reveal-step, 0) * 6% + 60%);
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+}
+
+/* Ochiladigan menyular uchun yengil paydo bo'lish */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    translate: 0 -0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

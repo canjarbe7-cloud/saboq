@@ -1,0 +1,49 @@
+# VPS uchun: sayt + PostgreSQL + Caddy (HTTPS sertifikatini o'zi oladi).
+# Ishga tushirish:  docker compose up -d --build
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admire
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD ni .env fayliga yozing}
+      POSTGRES_DB: admire
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admire"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://admire:${DB_PASSWORD}@db:5432/admire?schema=public
+    volumes:
+      - storage:/app/storage
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [app]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:?DOMAIN ni .env fayliga yozing (masalan admire.uz)}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  db_data:
+  storage:
+  caddy_data:
+  caddy_config:
