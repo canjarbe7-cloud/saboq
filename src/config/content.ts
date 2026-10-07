@@ -1,7 +1,7 @@
 /**
- * Bosh sahifadagi kontent: ustozlar, o'quvchilar natijalari, izohlar, FAQ.
- * ⚠️ Hozir bu yerda NAMUNAVIY ma'lumotlar turibdi — saytni ishga tushirishdan oldin
- * o'z markazingizning haqiqiy ma'lumotlari bilan almashtiring.
+ * Bosh sahifadagi kontentning BOSHLANG'ICH (namunaviy) qiymatlari: ustozlar, natijalar, fikrlar, FAQ.
+ * Haqiqiy ma'lumotlar admin panelning "Sayt kontenti" bo'limida kiritiladi va bazada saqlanadi —
+ * bu fayl faqat admin hali hech narsa saqlamagan bo'limlar uchun ishlatiladi.
  */
 
 export const stats = [
@@ -12,9 +12,9 @@ export const stats = [
 ];
 
 export const teachers = [
-  { name: "Ustoz ismi", role: "Writing va Speaking", score: "8.5", bio: "10 yillik tajriba. IELTS imtihon mezonlari bo‘yicha mutaxassis." },
-  { name: "Ustoz ismi", role: "Listening va Reading", score: "8.0", bio: "300 dan ortiq o‘quvchini 7.0+ natijaga olib chiqqan." },
-  { name: "Ustoz ismi", role: "Grammar va Vocabulary", score: "8.0", bio: "Murakkab mavzularni sodda tilda tushuntirish ustasi." },
+  { name: "Ustoz ismi", role: "Writing va Speaking", score: "IELTS 8.5", bio: "10 yillik tajriba. IELTS imtihon mezonlari bo‘yicha mutaxassis." },
+  { name: "Ustoz ismi", role: "Listening va Reading", score: "IELTS 8.0", bio: "300 dan ortiq o‘quvchini 7.0+ natijaga olib chiqqan." },
+  { name: "Ustoz ismi", role: "Grammar va Vocabulary", score: "IELTS 8.0", bio: "Murakkab mavzularni sodda tilda tushuntirish ustasi." },
 ];
 
 export const results = [

@@ -47,7 +47,11 @@ export function LessonView({ lessonId, startAt, watermark, initialCompleted, has
   return (
     <div className="space-y-4">
       {/* Videosiz dars (faqat audio/PDF) — materiallar sahifaning pastida */}
-      {hasVideo && <VideoPlayer lessonId={lessonId} startAt={startAt} watermark={watermark} onEnded={() => mark(true)} />}
+      {hasVideo && (
+        <div className="-mx-4 sm:mx-0">
+          <VideoPlayer lessonId={lessonId} startAt={startAt} watermark={watermark} onEnded={() => mark(true)} />
+        </div>
+      )}
 
       {error && <Alert>{error}</Alert>}
 
@@ -68,7 +72,7 @@ export function LessonView({ lessonId, startAt, watermark, initialCompleted, has
               </button>
             </>
           ) : (
-            <Button type="button" variant="accent" onClick={() => mark(true)} disabled={pending} className="h-11 w-full sm:w-auto">
+            <Button type="button" variant="primary" onClick={() => mark(true)} disabled={pending} className="h-11 w-full sm:w-auto">
               <Check className="size-5" strokeWidth={3} /> {t("lesson.complete")}
             </Button>
           )}
@@ -111,7 +115,7 @@ export function LessonView({ lessonId, startAt, watermark, initialCompleted, has
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
-            className="fixed inset-x-4 bottom-24 z-40 mx-auto max-w-sm rounded-2xl bg-brand p-4 text-brand-fg shadow-2xl sm:bottom-6"
+            className="fixed inset-x-4 bottom-[calc(6rem+env(safe-area-inset-bottom))] z-40 mx-auto max-w-sm rounded-2xl bg-brand p-4 text-brand-fg shadow-2xl sm:bottom-6"
           >
             <p className="text-xs font-bold uppercase tracking-wide text-white/70">{t("achievements.earnedToast")}</p>
             {earned.map((code) => (

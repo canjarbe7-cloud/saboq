@@ -196,8 +196,10 @@ export function CourseStructure({ courseId, modules }: { courseId: string; modul
             <div className="rounded-2xl border border-line bg-surface shadow-card">
               <div className="flex items-center gap-1 border-b border-line p-2 sm:gap-2 sm:px-3">
                 {handle}
-                <p className="min-w-0 flex-1 truncate font-bold">{m.title}</p>
-                <StatusBadge status={m.status} />
+                <div className="min-w-0 flex-1 sm:flex sm:items-center sm:gap-2">
+                  <p className="truncate font-bold sm:flex-1">{m.title}</p>
+                  <StatusBadge status={m.status} />
+                </div>
                 <button type="button" onClick={() => setEditing({ id: m.id, title: m.title, status: m.status })} aria-label={t("renameModule")}
                   className="grid size-9 place-items-center rounded-lg text-muted hover:bg-surface-2 hover:text-fg">
                   <Pencil className="size-4" />
@@ -222,12 +224,16 @@ export function CourseStructure({ courseId, modules }: { courseId: string; modul
                         {lessonHandle}
                         <Link href={`/admin/darslar/${l.id}`} className="flex min-w-0 flex-1 items-center gap-2 py-2 pr-3 hover:underline">
                           {l.videoStatus === "READY" ? <Video className="size-4 shrink-0 text-success" /> : <VideoOff className="size-4 shrink-0 text-muted" />}
-                          <span className="min-w-0 flex-1 truncate text-sm font-semibold">{l.title}</span>
-                          {l.materials > 0 && (
-                            <span className="hidden items-center gap-1 text-xs text-muted sm:flex"><FileText className="size-3.5" />{l.materials}</span>
-                          )}
-                          {l.durationSec > 0 && <span className="text-xs tabular-nums text-muted">{formatDuration(l.durationSec)}</span>}
-                          <StatusBadge status={l.status} />
+                          <span className="min-w-0 flex-1 sm:flex sm:items-center sm:gap-2">
+                            <span className="block truncate text-sm font-semibold sm:flex-1">{l.title}</span>
+                            <span className="mt-0.5 flex items-center gap-2 sm:mt-0">
+                              {l.materials > 0 && (
+                                <span className="flex items-center gap-1 text-xs text-muted"><FileText className="size-3.5" />{l.materials}</span>
+                              )}
+                              {l.durationSec > 0 && <span className="text-xs tabular-nums text-muted">{formatDuration(l.durationSec)}</span>}
+                              <StatusBadge status={l.status} />
+                            </span>
+                          </span>
                         </Link>
                       </div>
                     )}

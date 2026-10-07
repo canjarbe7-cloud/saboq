@@ -4,50 +4,61 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Ranglar palitrasi: to'q indigo (ishonch, jiddiylik) + iliq sariq (energiya).
+ * Saboq palitrasi: logotipdagi to'q ko'k ("S" harfi) + to'q sariq (naqsh) + iliq och fon.
+ * To'q sariq — urg'u rangi: yulduzcha, ogohlantirish, bezak va logotip naqshi.
  * Brend rangini o'zgartirish uchun faqat shu o'zgaruvchilarni tahrirlang.
  */
 :root {
-  --bg: #eef0f6;
+  --bg: #fdf6ef;
   --surface: #ffffff;
-  --surface-2: #e9ecf5;
-  --line: #d3d8e8;
-  --fg: #10132a;
-  --muted: #474e6b;
-  --brand: #4338ca;
-  --brand-hover: #3730a3;
-  --brand-soft: #e7e7fd;
+  --surface-2: #f6ebdf;
+  --line: #ecdccb;
+  --fg: #081d38;
+  --muted: #566277;
+  --brand: #14336b;
+  --brand-hover: #0c2450;
+  --brand-soft: #e6ecf7;
   --brand-fg: #ffffff;
-  --accent: #f59e0b;
-  --accent-soft: #fef3c7;
-  --accent-fg: #3b2500;
-  --success: #15803d;
-  --success-soft: #dcfce7;
-  --danger: #c81e3a;
-  --danger-soft: #fde8ec;
-  --marker: rgb(245 158 11 / 0.4);
+  --brand-deep: #071a33;
+  --accent: #f76c19;
+  --accent-soft: #ffe7d4;
+  --accent-fg: #3a1800;
+  /* Asosiy rangli (bg-brand) bloklar ustidagi bezak rangi: yorug'da to'q sariq, qorong'ida to'q ko'k */
+  --on-brand: #f76c19;
+  --success: #0f8a4b;
+  --success-soft: #d9f7e6;
+  --danger: #d1203f;
+  --danger-soft: #fde6ea;
+  --sky-from: #fbe3cd;
+  --sky-to: #fdf6ef;
+  --cloud: rgb(255 255 255 / 0.9);
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0c0e1a;
-  --surface: #151829;
-  --surface-2: #1d2136;
-  --line: #2a2f4a;
-  --fg: #eceefb;
-  --muted: #9aa1c0;
-  --brand: #6d66f5;
-  --brand-hover: #837dff;
-  --brand-soft: #23244a;
+  --bg: #050e1c;
+  --surface: #0c1a30;
+  --surface-2: #142641;
+  --line: #213554;
+  --fg: #f6efe7;
+  --muted: #9aa9bf;
+  /* Qorong'i rejimda asosiy rang — logotipdagi to'q sariq (to'q ko'k fon ustida ko'k ko'rinmaydi) */
+  --brand: #e8590c;
+  --brand-hover: #f97324;
+  --brand-soft: #35200f;
   --brand-fg: #ffffff;
-  --accent: #fbbf24;
-  --accent-soft: #3a2c0c;
-  --accent-fg: #2a1a00;
+  --brand-deep: #030915;
+  --accent: #ff8a3d;
+  --accent-soft: #3a2010;
+  --accent-fg: #2a1200;
+  --on-brand: #081d38;
   --success: #4ade80;
-  --success-soft: #12301f;
+  --success-soft: #0f2e1f;
   --danger: #fb7185;
   --danger-soft: #3a1620;
-  --marker: rgb(251 191 36 / 0.3);
+  --sky-from: #10274a;
+  --sky-to: #050e1c;
+  --cloud: rgb(232 89 12 / 0.1);
   color-scheme: dark;
 }
 
@@ -62,6 +73,8 @@
   --color-brand-hover: var(--brand-hover);
   --color-brand-soft: var(--brand-soft);
   --color-brand-fg: var(--brand-fg);
+  --color-brand-deep: var(--brand-deep);
+  --color-on-brand: var(--on-brand);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-fg: var(--accent-fg);
@@ -69,12 +82,22 @@
   --color-success-soft: var(--success-soft);
   --color-danger: var(--danger);
   --color-danger-soft: var(--danger-soft);
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --shadow-card: 0 1px 2px rgb(20 23 43 / 0.06), 0 8px 24px -12px rgb(20 23 43 / 0.16);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  /* Burchaklar biroz yumaloqroq */
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --shadow-card: 0 1px 2px rgb(8 29 56 / 0.05), 0 14px 32px -18px rgb(8 29 56 / 0.28);
   --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 40s linear infinite;
   @keyframes shimmer {
     from { background-position: 200% 0; }
     to { background-position: -200% 0; }
+  }
+  @keyframes float {
+    50% { translate: 0 -10px; }
   }
 }
 
@@ -82,11 +105,32 @@ html {
   /* Sahifa ichidagi havolalar (#kurslar va h.k.) silliq aylanadi; sahifalararo o'tishda Next.js buni o'chiradi */
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
+  /* Telefon yotqizilganda iOS matnni o'zicha kattalashtirmasin */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
+  /* Yotiq holatda kontent "notch" ostiga kirib ketmasin */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Sarlavhalar — logotipdagi kabi geometrik qalin shrift */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* iOS Safari 16px dan kichik shriftli maydon bosilganda sahifani kattalashtirib yuboradi */
+@media (max-width: 639px) {
+  input:not([type="checkbox"], [type="radio"], [type="range"]),
+  select,
+  textarea {
+    font-size: 1rem;
+  }
 }
 
 :focus-visible {
@@ -98,24 +142,34 @@ body {
   background: color-mix(in oklab, var(--brand) 22%, transparent);
 }
 
-/* Bosh sahifa fonidagi nozik katakli to'r (yuqoridan pastga so'nib boradi) */
+/* Nuqtali naqsh (yuqoridan pastga so'nib boradi) */
 @utility bg-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--line) 70%, transparent) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 75%);
+  background-image: radial-gradient(color-mix(in oklab, var(--accent) 55%, transparent) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 75%);
 }
 
-/* Sarlavhadagi muhim so'zlar ostidagi "marker" chizig'i (matn bir necha qatorga bo'linsa ham ishlaydi) */
-@utility highlight-marker {
-  background-image: linear-gradient(
-    to bottom,
-    transparent 64%,
-    var(--marker) 64%,
-    var(--marker) 88%,
-    transparent 88%
-  );
+/* Naqshning kichik bo'lagi — burchaklarga qo'yiladigan nuqtalar to'plami (rangi matn rangidan olinadi) */
+@utility bg-dots {
+  background-image: radial-gradient(currentColor 2px, transparent 2px);
+  background-size: 18px 18px;
+}
+
+/* Sahifa boshidagi iliq fon: och shaftoli rangidan asosiy fonga o'tish va yumshoq yorug' dog'lar */
+@utility bg-sky {
+  background-image:
+    radial-gradient(ellipse 38% 26% at 82% 78%, var(--cloud), transparent 70%),
+    radial-gradient(ellipse 34% 22% at 12% 88%, var(--cloud), transparent 70%),
+    radial-gradient(ellipse 30% 20% at 55% 96%, var(--cloud), transparent 70%),
+    linear-gradient(to bottom, var(--sky-from), var(--sky-to));
+}
+
+/* Sarlavhadagi muhim so'zlar — to'q ko'k plashka ichida oq matn (matn bir necha qatorga bo'linsa ham ishlaydi) */
+@utility highlight-box {
+  background: var(--brand);
+  color: var(--brand-fg);
+  padding: 0.04em 0.28em 0.1em;
+  border-radius: 0.22em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
@@ -167,5 +221,19 @@ body {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Davomat ekrani: QR kod almashguncha qolgan vaqt chizig'i */
+@keyframes qr-countdown {
+  to {
+    scale: 0 1;
+  }
+}
+
+/* Skaner: kamera ustidagi yuguruvchi chiziq */
+@keyframes scan-line {
+  50% {
+    translate: 0 14rem;
   }
 }

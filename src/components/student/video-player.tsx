@@ -216,7 +216,7 @@ export function VideoPlayer({ lessonId, startAt, watermark, onEnded }: {
       onContextMenu={(e) => e.preventDefault()}
       className={cn(
         "group relative overflow-hidden bg-black text-white outline-none select-none",
-        fullscreen ? "fixed inset-0 z-50" : "aspect-video w-full rounded-2xl shadow-card",
+        fullscreen ? "fixed inset-0 z-50" : "aspect-video w-full shadow-card sm:rounded-2xl",
         !visible && "cursor-none",
       )}
     >
@@ -263,7 +263,7 @@ export function VideoPlayer({ lessonId, startAt, watermark, onEnded }: {
           <div className="space-y-4">
             <p className="max-w-sm text-sm text-white/90 sm:text-base">{t(`errors.${errorKey}` as "errors.generic")}</p>
             {errorKey === "generic" && (
-              <Button type="button" variant="accent" size="sm" onClick={() => { setState("loading"); setAttempt((a) => a + 1); }}>
+              <Button type="button" variant="primary" size="sm" onClick={() => { setState("loading"); setAttempt((a) => a + 1); }}>
                 <RotateCw className="size-4" /> {tc("retry")}
               </Button>
             )}
@@ -290,6 +290,7 @@ export function VideoPlayer({ lessonId, startAt, watermark, onEnded }: {
           <div
             className={cn(
               "absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-2 pb-1.5 pt-10 transition-opacity duration-200 sm:px-3",
+              fullscreen && "pb-[max(0.375rem,env(safe-area-inset-bottom))] pl-[max(0.5rem,env(safe-area-inset-left))] pr-[max(0.5rem,env(safe-area-inset-right))]",
               visible ? "opacity-100" : "pointer-events-none opacity-0",
             )}
           >

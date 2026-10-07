@@ -2,6 +2,7 @@
   "student": {
     "nav": {
       "courses": "Kurslarim",
+      "attendance": "Davomat",
       "profile": "Profil"
     },
     "home": {
@@ -153,6 +154,29 @@
       "title": "Sahifa topilmadi",
       "text": "Bu kurs yoki dars mavjud emas yoki sizga hali ochilmagan.",
       "back": "Kurslarimga qaytish"
+    },
+    "attendance": {
+      "title": "Davomat",
+      "subtitle": "Darsga kelganingizda ustoz ekranidagi QR kodni skaner qiling.",
+      "scan": "Skanerlash",
+      "stop": "To‘xtatish",
+      "aim": "Kamerani ekrandagi QR kodga qarating",
+      "checking": "Tekshirilmoqda…",
+      "successTitle": "Kelganingiz tasdiqlandi!",
+      "alreadyTitle": "Siz allaqachon belgilangansiz",
+      "successText": "{title} · {time}",
+      "again": "Yana skanerlash",
+      "cameraDenied": "Kameraga ruxsat berilmadi. Brauzer sozlamalaridan ruxsat bering yoki telefoningizning oddiy kamerasi bilan QR kodni skaner qiling — sayt o‘zi ochiladi.",
+      "cameraUnavailable": "Bu qurilmada kamerani ochib bo‘lmadi. Telefoningizning oddiy kamerasi bilan QR kodni skaner qiling — sayt o‘zi ochiladi.",
+      "notOurCode": "Bu davomat kodi emas. Ustoz ekranidagi QR kodni skaner qiling.",
+      "statPresent": "Kelgan",
+      "statAbsent": "Kelmagan",
+      "statRate": "Davomat",
+      "history": "Tarix",
+      "empty": "Hali davomat yozuvi yo‘q",
+      "emptyText": "Birinchi darsda QR kodni skaner qilganingizdan keyin shu yerda ko‘rinadi.",
+      "present": "Bor",
+      "absent": "Yo‘q"
     }
   }
 }

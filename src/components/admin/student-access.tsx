@@ -72,11 +72,11 @@ export function EnrollmentEditor({ userId, courses, initial }: { userId: string;
               </label>
               {on && (
                 <label className="flex items-center gap-2 pl-8 text-sm sm:pl-0">
-                  <span className="text-muted sm:sr-only">{t("expires")}</span>
+                  <span className="shrink-0 text-muted sm:sr-only">{t("expires")}</span>
                   <input
                     type="date" value={date} aria-label={t("expires")}
                     onChange={(e) => update((a) => ({ ...a, [c.id]: e.target.value }))}
-                    className="h-10 rounded-lg border border-line bg-surface px-2 text-sm"
+                    className="h-10 min-w-0 rounded-lg border border-line bg-surface px-2 text-sm"
                   />
                   {date === "" && <span className="text-xs font-medium text-muted">{tc("unlimited")}</span>}
                 </label>

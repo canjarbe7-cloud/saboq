@@ -43,7 +43,7 @@ export function ApplicationRow({ app }: { app: { id: string; name: string; phone
       <div className="flex flex-col gap-2 sm:flex-row">
         <input
           value={note} onChange={(e) => setNote(e.target.value)} maxLength={500} placeholder={t("notePlaceholder")} aria-label={t("note")}
-          className="h-10 min-w-0 flex-1 rounded-xl border border-line bg-surface px-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
+          className="h-10 min-w-0 shrink-0 rounded-xl border border-line bg-surface px-3 text-sm sm:flex-1 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25"
         />
         <div className="flex gap-2">
           <select

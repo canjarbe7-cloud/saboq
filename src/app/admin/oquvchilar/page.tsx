@@ -43,14 +43,14 @@ export default async function StudentsPage({ searchParams }: PageProps<"/admin/o
     return `/admin/oquvchilar?${params}`;
   };
 
-  const selectClass = "h-11 rounded-xl border border-line bg-surface px-3 text-sm";
+  const selectClass = "h-11 min-w-0 rounded-xl border border-line bg-surface px-3 text-sm";
 
   return (
     <>
       <PageHeader title={t("title")} action={<CreateStudentButton groups={groups} />} />
 
-      <form className="mb-5 flex flex-col gap-2 sm:flex-row" role="search">
-        <div className="relative flex-1">
+      <form className="mb-5 grid grid-cols-2 gap-2 sm:flex" role="search">
+        <div className="relative col-span-2 sm:flex-1">
           <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted" />
           <input
             type="search" name="q" defaultValue={q} placeholder={t("searchPlaceholder")} aria-label={tc("search")}
@@ -66,7 +66,7 @@ export default async function StudentsPage({ searchParams }: PageProps<"/admin/o
           <option value="ACTIVE">{t("statusActive")}</option>
           <option value="BLOCKED">{t("statusBlocked")}</option>
         </select>
-        <Button type="submit" variant="outline">{tc("search")}</Button>
+        <Button type="submit" variant="outline" className="col-span-2">{tc("search")}</Button>
       </form>
 
       {result.items.length === 0 ? (
@@ -90,7 +90,7 @@ export default async function StudentsPage({ searchParams }: PageProps<"/admin/o
                         {s.mustChangePassword && <Badge tone="accent">{t("tempPassword")}</Badge>}
                         {s.group && <Badge>{s.group.name}</Badge>}
                       </span>
-                      <span className="mt-0.5 block truncate text-sm text-muted">
+                      <span className="mt-0.5 block text-sm text-muted sm:truncate">
                         @{s.username} · {formatPhone(s.phone)}
                       </span>
                       <span className="block truncate text-xs text-muted/80">

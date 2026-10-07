@@ -33,7 +33,7 @@ export default async function ApplicationsPage({ searchParams }: PageProps<"/adm
   return (
     <>
       <PageHeader title={t("title")} />
-      <nav className="-mx-4 mb-5 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
+      <nav className="no-scrollbar -mx-4 mb-5 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0">
         {tabs.map((tab) => (
           <Link
             key={tab.href} href={tab.href}

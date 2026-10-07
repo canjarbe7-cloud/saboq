@@ -1,4 +1,4 @@
-// SABOQ — ma'lumotlar bazasi sxemasi.
+// Saboq — ma'lumotlar bazasi sxemasi.
 // O'zgartirgandan keyin: npm run db:migrate
 
 generator client {
@@ -52,6 +52,16 @@ enum Gender {
   FEMALE
 }
 
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+}
+
+enum AttendanceMethod {
+  QR
+  MANUAL
+}
+
 enum ApplicationStatus {
   NEW
   CONTACTED
@@ -89,6 +99,7 @@ model User {
   activityDays ActivityDay[]
   achievements UserAchievement[]
   auditLogs    AuditLog[]
+  attendance   AttendanceRecord[]
 
   @@index([role, status])
   @@index([groupId])
@@ -130,11 +141,12 @@ model RateLimit {
 }
 
 model Group {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  note      String?
-  createdAt DateTime @default(now())
-  users     User[]
+  id                 String              @id @default(cuid())
+  name               String              @unique
+  note               String?
+  createdAt          DateTime            @default(now())
+  users              User[]
+  attendanceSessions AttendanceSession[]
 }
 
 model Course {
@@ -255,6 +267,49 @@ model UserAchievement {
   earnedAt DateTime @default(now())
 
   @@id([userId, code])
+}
+
+/// Bitta dars uchun davomat: admin ekranga QR kod chiqaradi, o'quvchilar kabinetdan skaner qiladi.
+model AttendanceSession {
+  id        String    @id @default(cuid())
+  /// null — guruhga bog'lanmagan (barcha faol o'quvchilar).
+  groupId   String?
+  group     Group?    @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  /// Guruh keyin o'chirilsa ham tarixda nomi qoladi.
+  title     String
+  /// QR kodni imzolash uchun tasodifiy kalit. Brauzerga hech qachon yuborilmaydi.
+  secret    String
+  startedAt DateTime  @default(now())
+  /// null — davomat hali ochiq (skaner qilish mumkin).
+  closedAt  DateTime?
+
+  records AttendanceRecord[]
+
+  @@index([startedAt])
+  @@index([groupId, startedAt])
+}
+
+/// Yopilgan davomatda har bir o'quvchi uchun yozuv bor (PRESENT yoki ABSENT);
+/// ochiq davomatda yozuvi yo'q o'quvchi "hali kelmagan" hisoblanadi.
+model AttendanceRecord {
+  sessionId String
+  session   AttendanceSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    AttendanceStatus
+  method    AttendanceMethod
+  markedAt  DateTime          @default(now())
+
+  @@id([sessionId, userId])
+  @@index([userId, markedAt])
+}
+
+/// Admin panelda tahrirlanadigan sayt kontenti: har bo'lim (ustozlar, natijalar, aloqa …) bitta yozuv.
+/// Tuzilishi src/lib/site-content.ts dagi sxemalar bilan tekshiriladi.
+model SiteContent {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
 }
 
 /// "Kursga yozilish" arizasi.

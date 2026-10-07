@@ -9,11 +9,12 @@
       "contact": "Aloqa",
       "login": "Kabinetga kirish",
       "apply": "Kursga yozilish",
-      "menu": "Menyu"
+      "menu": "Menyu",
+      "app": "Ilova"
     },
     "hero": {
-      "badge": "IELTS onlayn video kurslar",
-      "title": "IELTS’dan {score} oling —",
+      "badge": "Ingliz tili & IELTS · onlayn",
+      "title": "IELTS’dan {score} oling",
       "titleAccent": "o‘zingizga qulay vaqtda",
       "text": "Tajribali ustozlarning video darslari, yuklab olinadigan materiallar va har bir qadamingizni ko‘rsatib turadigan progress. Telefoningizdan, istalgan joyda.",
       "cta": "Kursga yozilish",
@@ -29,6 +30,8 @@
       "cardProgress": "Kurs progressi",
       "cardStreak": "5 kun ketma-ket",
       "cardAchievement": "Yangi yutuq: 10 ta dars",
+      "call": "Savollar uchun",
+      "admission": "Kurslarga qabul davom etmoqda",
       "cardLessons": [
         "Task 2 tuzilmasi",
         "Kuchli kirish yozish",
@@ -37,7 +40,7 @@
     },
     "about": {
       "eyebrow": "Afzalliklar",
-      "title": "Nega aynan SABOQ?",
+      "title": "Nega aynan Saboq?",
       "text": "Biz yillar davomida oflayn guruhlarda sinovdan o‘tgan dasturimizni endi onlayn formatga olib chiqdik.",
       "items": [
         {
@@ -115,6 +118,7 @@
     "footer": {
       "rights": "Barcha huquqlar himoyalangan.",
       "contacts": "Aloqa",
+      "social": "Ijtimoiy tarmoqlar",
       "pages": "Sahifalar"
     },
     "contact": {
@@ -125,6 +129,8 @@
       "telegram": "Telegram",
       "hours": "Ish vaqti",
       "map": "Xaritada markaz joylashuvi",
+      "openGoogle": "Google Maps’da ochish",
+      "openYandex": "Yandex Maps’da ochish",
       "formTitle": "Kursga yozilish",
       "formText": "Ma‘lumotlaringizni qoldiring — bir ish kuni ichida bog‘lanamiz.",
       "name": "Ismingiz",
@@ -161,6 +167,38 @@
       "title": "Nimadir xato ketdi",
       "text": "Kutilmagan xatolik yuz berdi. Biz buni tuzatamiz — hozircha sahifani qayta yuklab ko‘ring.",
       "retry": "Qayta urinish"
+    },
+    "app": {
+      "eyebrow": "Mobil ilova",
+      "title": "Saboq ilovasini o‘rnating",
+      "text": "Play Market kerak emas — to‘g‘ridan-to‘g‘ri shu sahifadan o‘rnatiladi, joy deyarli olmaydi va o‘zi yangilanib turadi.",
+      "points": [
+        "Bosh ekranda Saboq belgisi",
+        "Darslar va davomat bir bosishda",
+        "Har doim eng yangi versiya"
+      ],
+      "stepsTitle": "Qo‘lda o‘rnatish",
+      "android": "Android (Chrome)",
+      "androidSteps": [
+        "Shu sahifani Chrome brauzerida oching.",
+        "Yuqori o‘ng burchakdagi ⋮ menyuni bosing.",
+        "“Ilovani o‘rnatish” yoki “Bosh ekranga qo‘shish”ni tanlang.",
+        "“O‘rnatish”ni bosing — Saboq belgisi bosh ekranda paydo bo‘ladi."
+      ],
+      "ios": "iPhone (Safari)",
+      "iosSteps": [
+        "Shu sahifani Safari brauzerida oching.",
+        "Pastdagi “Ulashish” tugmasini bosing (kvadrat va yuqoriga strelka).",
+        "Ro‘yxatdan “Bosh ekranga qo‘shish”ni tanlang.",
+        "“Qo‘shish”ni bosing — Saboq belgisi bosh ekranda paydo bo‘ladi."
+      ],
+      "desktop": "Kompyuter (Chrome, Edge)",
+      "desktopSteps": [
+        "Manzil satrining o‘ng tomonidagi o‘rnatish belgisini bosing.",
+        "“O‘rnatish”ni tasdiqlang — Saboq alohida oynada ochiladi."
+      ],
+      "after": "O‘rnatgandan keyin ilovani ochib, markaz bergan login va parol bilan kiring.",
+      "login": "Kabinetga kirish"
     }
   }
 }

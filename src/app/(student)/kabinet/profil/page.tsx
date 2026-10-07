@@ -42,7 +42,7 @@ export default async function StudentProfilePage({ searchParams }: PageProps<"/k
     <div className="space-y-6">
       <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">{tp("title")}</h1>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
-        <nav className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:self-start lg:rounded-2xl lg:border lg:border-line lg:bg-surface lg:p-2 lg:shadow-card">
+        <nav className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 lg:mx-0 lg:flex-col lg:self-start lg:rounded-2xl lg:border lg:border-line lg:bg-surface lg:p-2 lg:shadow-card">
           {TABS.map(({ key, icon: Icon }) => (
             <Link
               key={key} href={key === "info" ? "/kabinet/profil" : `/kabinet/profil?tab=${key}`} aria-current={tab === key ? "page" : undefined}
@@ -129,11 +129,11 @@ async function ActivityTab({ userId }: { userId: string }) {
     <div className="space-y-6">
       <ul className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         {stats.map(({ label, value, icon: Icon, tone }) => (
-          <li key={label} className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 shadow-card">
+          <li key={label} className="flex flex-col gap-3 rounded-2xl border border-line bg-surface p-4 shadow-card sm:flex-row sm:items-center">
             <span className={cn("grid size-11 shrink-0 place-items-center rounded-xl", tone)}><Icon className="size-6" /></span>
             <div className="min-w-0">
               <p className="text-xl font-extrabold tabular-nums">{value}</p>
-              <p className="truncate text-xs text-muted">{label}</p>
+              <p className="text-xs leading-tight text-muted sm:truncate">{label}</p>
             </div>
           </li>
         ))}
@@ -144,14 +144,14 @@ async function ActivityTab({ userId }: { userId: string }) {
           <h2 className="text-lg font-bold">{tp("tabs.activity")}</h2>
           <span className="text-sm text-muted">{tp("calendar", { weeks: WEEKS })}</span>
         </div>
-        <div className="overflow-x-auto pb-1">
-          {/* Har bir ustun — bitta hafta (dushanbadan yakshanbagacha) */}
-          <div className="grid w-max grid-flow-col grid-rows-7 gap-1">
+        <div>
+          {/* Har bir ustun — bitta hafta (dushanbadan yakshanbagacha); kataklar ekran eniga moslashadi */}
+          <div className="grid max-w-md auto-cols-fr grid-flow-col grid-rows-7 gap-1">
             {overview.days.map((d) => (
               <span
                 key={d.date}
                 title={d.future ? undefined : tp(d.active ? "activeDay" : "inactiveDay", { date: formatDate(d.date) })}
-                className={cn("size-3.5 rounded-[4px] sm:size-4", d.future ? "bg-transparent" : d.active ? "bg-brand" : "bg-surface-2")}
+                className={cn("aspect-square rounded-[4px]", d.future ? "bg-transparent" : d.active ? "bg-brand" : "bg-surface-2")}
               />
             ))}
           </div>
@@ -166,7 +166,7 @@ async function ActivityTab({ userId }: { userId: string }) {
 
       <Card>
         <h2 className="mb-4 text-lg font-bold">{ta("title")}</h2>
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
+        <ul className="grid grid-cols-1 gap-3 min-[30rem]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
           {ACHIEVEMENTS.map((a) => {
             const earned = have.has(a.code);
             return (

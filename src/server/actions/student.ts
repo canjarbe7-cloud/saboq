@@ -5,6 +5,7 @@ import { z } from "zod";
 import { AppError } from "@/server/errors";
 import { destroyUserSessions } from "@/server/auth/session";
 import { getLessonAccess, setLessonCompleted } from "@/server/services/learning";
+import { checkIn } from "@/server/services/attendance";
 import { db } from "@/server/db";
 import { idSchema, profileSchema } from "@/lib/validation";
 import { studentAction } from "./helpers";
@@ -35,4 +36,11 @@ export const updateProfileAction = studentAction(profileSchema, async (input, ct
     data: { ...rest, ...(birthDate !== undefined ? { birthDate: birthDate ? new Date(`${birthDate}T00:00:00Z`) : null } : {}) },
   });
   revalidatePath("/kabinet/profil");
+});
+
+/** Davomat: ekrandagi QR koddan o'qilgan kod bilan "darsga keldim" deb belgilash. */
+export const checkInAction = studentAction(z.object({ code: z.string().min(10).max(120) }), async ({ code }, ctx) => {
+  const res = await checkIn(ctx.user.id, code);
+  revalidatePath("/kabinet/davomat");
+  return { title: res.title, markedAt: res.markedAt.toISOString(), already: res.already };
 });

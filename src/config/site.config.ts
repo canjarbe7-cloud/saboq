@@ -1,18 +1,25 @@
 /**
- * Markaz haqidagi asosiy ma'lumotlar — hammasi shu bitta faylda.
- * Manzil, telefon yoki Telegram o'zgarsa, faqat shu yerni tahrirlang.
+ * Markaz nomi va BOSHLANG'ICH aloqa ma'lumotlari.
+ *
+ * Telefon, Telegram, manzil, ish vaqti va xarita nuqtasi admin panelning "Sayt kontenti" bo'limida
+ * o'zgartiriladi (bazada saqlanadi). Bu yerdagi qiymatlar faqat admin hali hech narsa saqlamagan
+ * paytda ishlatiladi.
  */
 export const siteConfig = {
-  name: "SABOQ",
-  fullName: "SABOQ o‘quv markazi",
-  // TODO: haqiqiy ma'lumotlar bilan almashtiring
-  address: "Toshkent sh., Namuna ko‘chasi, 1-uy",
-  phone: "+998 90 000 00 00",
-  phoneHref: "tel:+998900000000",
-  telegram: "@canjarbe7",
-  telegramHref: "https://t.me/canjarbe7",
-  workingHours: "Dushanba – Shanba, 09:00 – 20:00",
-  /** Xarita uchun "embed" havola (Google Maps → Share → Embed a map). */
-  mapEmbedUrl:
-    "https://www.google.com/maps?q=41.311081,69.240562&z=15&output=embed",
+  name: "Saboq",
+  fullName: "Saboq School",
+  /** Logotip ostidagi kichik yozuv. */
+  tagline: "school",
+  contacts: {
+    phone: "+998911556255",
+    /** Telegram username, "@" belgisisiz. */
+    telegram: "Saboq_school_official",
+    /** Instagram username, "@" belgisisiz. Bo'sh bo'lsa — saytda ko'rsatilmaydi. */
+    instagram: "saboq.school",
+    address: "Farg‘ona vil., Buvayda tumani, Yangiqo‘rg‘on",
+    workingHours: "Dushanba – Shanba, 09:00 – 20:00",
+    /** Xaritadagi nuqta: kenglik va uzunlik. */
+    lat: 40.557149,
+    lng: 71.14417,
+  },
 } as const;

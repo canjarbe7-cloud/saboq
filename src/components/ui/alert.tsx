@@ -8,7 +8,7 @@ export function Alert({ kind = "error", children }: { kind?: "error" | "success"
     <div
       role={kind === "error" ? "alert" : "status"}
       className={cn(
-        "flex items-start gap-2.5 rounded-xl px-4 py-3 text-sm font-medium",
+        "flex items-start gap-2.5 rounded-2xl px-4 py-3 text-sm font-semibold",
         kind === "error" ? "bg-danger-soft text-danger" : "bg-success-soft text-success",
       )}
     >

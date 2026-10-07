@@ -68,7 +68,7 @@ export default async function StudentCoursePage({ params }: PageProps<"/kabinet/
 
         <div className="relative mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           {startId && (
-            <ButtonLink href={`/kabinet/darslar/${startId}`} size="lg" variant="accent">
+            <ButtonLink href={`/kabinet/darslar/${startId}`} size="lg" variant="primary">
               <PlayCircle className="size-5" />
               {course.nextLessonId ? (course.completed > 0 ? t("home.continue") : t("home.start")) : t("home.review")}
             </ButtonLink>

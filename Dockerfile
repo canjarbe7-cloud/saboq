@@ -1,4 +1,4 @@
-# SABOQ — production image
+# Saboq — production image
 FROM node:22-slim AS build
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*

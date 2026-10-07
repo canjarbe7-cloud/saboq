@@ -1,6 +1,6 @@
-# SABOQ — IELTS onlayn video kurslar platformasi
+# Saboq School — IELTS onlayn video kurslar platformasi
 
-SABOQ o‘quv markazi uchun yopiq video darslar sayti: ochiq sahifalar (bosh sahifa, aloqa, ariza),
+Saboq School o‘quv markazi uchun yopiq video darslar sayti: ochiq sahifalar (bosh sahifa, aloqa, ariza),
 o‘quvchi kabineti va admin panel.
 
 - **Ro‘yxatdan o‘tish yo‘q.** Login va parolni faqat admin beradi.

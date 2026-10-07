@@ -22,7 +22,19 @@
     "saved": "Saqlandi",
     "saving": "Saqlanmoqda…",
     "open": "Ochish",
-    "unlimited": "Muddatsiz"
+    "unlimited": "Muddatsiz",
+    "install": {
+      "button": "Ilovani o‘rnatish",
+      "short": "O‘rnatish",
+      "how": "Qanday?",
+      "installed": "Ilova o‘rnatilgan",
+      "checking": "Tekshirilmoqda…",
+      "dismiss": "Yopish",
+      "hintIos": "Pastdagi “iPhone” ko‘rsatmasi bo‘yicha o‘rnating",
+      "hintManual": "Pastdagi ko‘rsatma bo‘yicha brauzer menyusidan o‘rnating",
+      "bannerTitle": "Saboq — telefoningizda",
+      "bannerText": "Ilova qilib o‘rnating: bir bosishda ochiladi."
+    }
   },
   "errors": {
     "invalid": "Kiritilgan ma‘lumotlarda xatolik bor. Tekshirib, qayta urinib ko‘ring.",
@@ -39,7 +51,12 @@
     "videoNotConfigured": "Video xizmati hali ulanmagan. .env faylida BUNNY_STREAM_* qiymatlarini to‘ldiring (README’ga qarang).",
     "videoService": "Video xizmati bilan bog‘lanib bo‘lmadi. Birozdan keyin qayta urinib ko‘ring.",
     "rateLimited": "Juda ko‘p so‘rov yuborildi. Birozdan keyin qayta urinib ko‘ring.",
-    "noAccess": "Bu darsga kirish huquqingiz yo‘q."
+    "noAccess": "Bu darsga kirish huquqingiz yo‘q.",
+    "attendanceInvalid": "Bu davomat kodi emas yoki buzilgan. Ekrandagi QR kodni qayta skaner qiling.",
+    "attendanceExpired": "Kod eskirgan. Ekrandagi yangi QR kodni qayta skaner qiling.",
+    "attendanceClosed": "Bu darsning davomati yakunlangan. Ustozga murojaat qiling.",
+    "attendanceNotMember": "Bu davomat “{group}” guruhi uchun. Siz bu guruhda emassiz — ustozga murojaat qiling.",
+    "photoType": "Rasm turi mos emas. JPG, PNG yoki WebP rasm yuklang."
   },
   "sections": {
     "LISTENING": "Listening",

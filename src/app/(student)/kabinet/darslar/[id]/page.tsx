@@ -41,7 +41,7 @@ export default async function StudentLessonPage({ params }: PageProps<"/kabinet/
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] xl:grid-cols-[minmax(0,1fr)_22rem]">
       <div className="min-w-0 space-y-5">
         <div>
-          <Link href={`/kabinet/kurslar/${course.slug}`} className="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-fg">
+          <Link href={`/kabinet/kurslar/${course.slug}`} className="-my-2 inline-flex items-center gap-1 py-2 text-sm font-medium text-muted hover:text-fg">
             <ChevronLeft className="size-4" /> {course.title}
           </Link>
           <h1 className="mt-1 text-balance text-2xl font-extrabold tracking-tight sm:text-3xl">{lesson.title}</h1>

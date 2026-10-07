@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/server/db";
 import { AppError } from "@/server/errors";
@@ -7,6 +8,9 @@ import { adminAction } from "./helpers";
 import { idSchema, nameSchema, phoneSchema, SECTIONS, titleSchema, usernameSchema } from "@/lib/validation";
 import * as students from "@/server/services/students";
 import * as courses from "@/server/services/courses";
+import * as attendance from "@/server/services/attendance";
+import { saveSiteContent } from "@/server/services/site-content";
+import { contentUpdateSchema } from "@/lib/site-content";
 import { destroyUserSessions } from "@/server/auth/session";
 import { createVideo, deleteVideo, getVideoState, signTusUpload } from "@/server/video/bunny";
 import { isLocalVideoId } from "@/server/video/local";
@@ -273,4 +277,40 @@ export const publishCourseTreeAction = adminAction(z.object({ courseId: idSchema
   const result = await courses.publishCourseTree(courseId);
   await ctx.audit("course.publishAll", courseId, result);
   return result;
+});
+
+/* ───────────── Davomat ───────────── */
+
+export const startAttendanceAction = adminAction(z.object({ groupId: idSchema.nullable() }), async ({ groupId }, ctx) => {
+  const session = await attendance.startSession(groupId);
+  await ctx.audit("attendance.start", session.id, { title: session.title });
+  return { id: session.id };
+});
+
+export const closeAttendanceAction = adminAction(z.object({ id: idSchema }), async ({ id }, ctx) => {
+  const session = await attendance.closeSession(id);
+  await ctx.audit("attendance.close", id, { title: session.title });
+});
+
+export const deleteAttendanceAction = adminAction(z.object({ id: idSchema }), async ({ id }, ctx) => {
+  const session = await attendance.deleteSession(id);
+  await ctx.audit("attendance.delete", id, { title: session.title });
+});
+
+/** Qo'lda Bor/Yo'q qilish. Jurnalga yozilmaydi — bir darsda o'nlab marta bosiladi. */
+export const setAttendanceAction = adminAction(
+  z.object({ sessionId: idSchema, userId: idSchema, present: z.boolean() }),
+  async ({ sessionId, userId, present }) => {
+    await attendance.setManual(sessionId, userId, present ? "PRESENT" : "ABSENT");
+  },
+);
+
+/* ───────────── Sayt kontenti ───────────── */
+
+/** Bosh sahifa bo'limlaridan birini (ustozlar, natijalar, fikrlar, FAQ, raqamlar, aloqa) saqlaydi. */
+export const saveSiteContentAction = adminAction(contentUpdateSchema, async (input, ctx) => {
+  await saveSiteContent(input.key, input.value);
+  // Ochiq sahifalar ham yangilansin (admin sahifalarini qolip o'zi yangilaydi)
+  revalidatePath("/", "layout");
+  await ctx.audit("content.update", input.key);
 });

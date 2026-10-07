@@ -4,7 +4,7 @@ import { getMessages } from "next-intl/server";
 import { StudentShell } from "@/components/student/student-shell";
 import { requireStudent } from "@/server/auth/guards";
 
-export const metadata: Metadata = { title: { default: "Kabinet", template: "%s · SABOQ" }, robots: { index: false } };
+export const metadata: Metadata = { title: { default: "Kabinet", template: "%s · Saboq" }, robots: { index: false } };
 
 export default async function StudentLayout({ children }: LayoutProps<"/kabinet">) {
   const { user } = await requireStudent();

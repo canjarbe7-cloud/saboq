@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 
 const inputClass =
-  "h-12 w-full rounded-xl border border-line bg-surface px-4 text-base text-fg placeholder:text-muted/70 transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25 aria-invalid:border-danger";
+  "h-12 w-full rounded-xl border-2 border-line bg-surface px-4 text-base font-medium text-fg placeholder:font-normal placeholder:text-muted/70 transition-colors hover:border-brand/40 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15 aria-invalid:border-danger";
 
 type FieldProps = ComponentProps<"input"> & { label: string; error?: string; hint?: ReactNode };
 
@@ -16,7 +16,7 @@ export function Field({ label, error, hint, className, id, ...props }: FieldProp
   const inputId = id ?? auto;
   return (
     <div className="space-y-1.5">
-      <label htmlFor={inputId} className="block text-sm font-medium text-fg">
+      <label htmlFor={inputId} className="block text-sm font-bold text-fg">
         {label}
       </label>
       <input
@@ -45,7 +45,7 @@ export function PasswordField(props: Omit<FieldProps, "type">) {
   const { label, error, hint, className, ...rest } = props;
   return (
     <div className="space-y-1.5">
-      <label htmlFor={inputId} className="block text-sm font-medium text-fg">
+      <label htmlFor={inputId} className="block text-sm font-bold text-fg">
         {label}
       </label>
       <div className="relative">
@@ -77,7 +77,7 @@ export function PasswordField(props: Omit<FieldProps, "type">) {
 }
 
 const controlClass =
-  "w-full rounded-xl border border-line bg-surface px-4 text-base text-fg transition-colors focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25";
+  "w-full rounded-xl border-2 border-line bg-surface px-4 text-base font-medium text-fg transition-colors hover:border-brand/40 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15";
 
 export function Select({ label, className, children, id, ...props }: ComponentProps<"select"> & { label?: string }) {
   const auto = useId();
@@ -85,7 +85,7 @@ export function Select({ label, className, children, id, ...props }: ComponentPr
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={selectId} className="block text-sm font-medium text-fg">
+        <label htmlFor={selectId} className="block text-sm font-bold text-fg">
           {label}
         </label>
       )}
@@ -101,7 +101,7 @@ export function Textarea({ label, className, id, ...props }: ComponentProps<"tex
   const areaId = id ?? auto;
   return (
     <div className="space-y-1.5">
-      <label htmlFor={areaId} className="block text-sm font-medium text-fg">
+      <label htmlFor={areaId} className="block text-sm font-bold text-fg">
         {label}
       </label>
       <textarea id={areaId} className={cn(controlClass, "min-h-28 py-3", className)} {...props} />

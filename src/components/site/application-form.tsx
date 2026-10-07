@@ -47,7 +47,7 @@ function ApplicationFormInner({ onAnother }: { onAnother: () => void }) {
       <div className="absolute -left-[9999px]" aria-hidden>
         <label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
-      <Button type="submit" size="lg" variant="accent" className="h-13 w-full text-base" disabled={pending}>
+      <Button type="submit" size="lg" variant="primary" className="h-13 w-full text-base" disabled={pending}>
         <Send className="size-5" /> {pending ? t("submitting") : t("submit")}
       </Button>
       <p className="flex items-center justify-center gap-1.5 text-xs text-muted">
