@@ -4,6 +4,11 @@ services:
   db:
     image: postgres:17
     restart: unless-stopped
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       POSTGRES_USER: admire
       POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD ni .env fayliga yozing}
@@ -19,6 +24,11 @@ services:
   app:
     build: .
     restart: unless-stopped
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
     depends_on:
       db:
         condition: service_healthy
@@ -31,6 +41,11 @@ services:
   caddy:
     image: caddy:2
     restart: unless-stopped
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
     depends_on: [app]
     ports:
       - "80:80"
